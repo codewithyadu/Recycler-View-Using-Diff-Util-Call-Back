@@ -9,7 +9,7 @@ import com.example.recyclerviewlistadapterdiffutilcallback.databinding.ActivityS
 import com.example.recyclerviewlistadapterdiffutilcallback.simple.itemstate.*
 import com.example.recyclerviewlistadapterdiffutilcallback.simple.view.adapter.UserAdapter
 
-class SimpleRecyclerView : AppCompatActivity() {
+class SimpleRecyclerViewActivity : AppCompatActivity() {
     
     lateinit var binding: ActivitySimpleRecyclerViewBinding
     lateinit var adapter: UserAdapter
@@ -19,43 +19,22 @@ class SimpleRecyclerView : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_simple_recycler_view)
         with(binding) {
-            lifecycleOwner = this@SimpleRecyclerView
+            lifecycleOwner = this@SimpleRecyclerViewActivity
         }
 
         setRecyclerView()
 
         binding.button.setOnClickListener {
-            /**
-             * For Add
-             */
-//            val newList = adapter.currentList.toMutableList()
-//            val newUser = UserItemState("NewUser")
-//            newList.add(newUser)
-//            adapter.submitList(newList.toList())
-            /**
-             * For Update
-             */
-//            val newList = adapter.currentList.toMutableList()
-//            val oldUser = newList[0] as UserItemState
-//            val user = UserItemState("${oldUser.userName} updated")
-//            newList.removeAt(0)
-//            newList.add(0, user)
-//            adapter.submitList(newList.toList())
-            /**
-             * For Delete
-             */
-//            val newList = adapter.currentList.toMutableList()
-//            newList.removeAt(0)
-//            adapter.submitList(newList.toList())
-            /**
-             * For Delete All
-             */
-//            val newList = adapter.currentList.toMutableList()
-//            newList.clear()
-//            adapter.submitList(newList.toList())
+//            addItemInList()
+//            updateItemInList()
+//            deleteItemInList()
+//            deleteAllItemInList()
         }
     }
 
+    /**
+     * Setting up recycler view
+     */
     private fun setRecyclerView() {
         setList()
         val layoutManager = LinearLayoutManager(this)
@@ -67,6 +46,9 @@ class SimpleRecyclerView : AppCompatActivity() {
         adapter.submitList(list)
     }
 
+    /**
+     * Setting up the list for recycler view
+     */
     private fun setList() {
         list = ArrayList<BaseItemState>()
         val horizontalList = ArrayList<HorizontalUserItemState>()
@@ -84,5 +66,45 @@ class SimpleRecyclerView : AppCompatActivity() {
             val user = UserItemState("Yadu $i")
             list.add(user)
         }
+    }
+
+    /**
+     * For Adding Item in the list
+     */
+    private fun addItemInList() {
+        val newList = adapter.currentList.toMutableList()
+        val newUser = UserItemState("NewUser")
+        newList.add(newUser)
+        adapter.submitList(newList.toList())
+    }
+
+    /**
+     * For Updating Item in the list
+     */
+    private fun updateItemInList() {
+        val newList = adapter.currentList.toMutableList()
+        val oldUser = newList[0] as UserItemState
+        val user = UserItemState("${oldUser.userName} updated")
+        newList.removeAt(0)
+        newList.add(0, user)
+        adapter.submitList(newList.toList())
+    }
+
+    /**
+     * For Deleting Item in the list
+     */
+    private fun deleteItemInList() {
+        val newList = adapter.currentList.toMutableList()
+        newList.removeAt(0)
+        adapter.submitList(newList.toList())
+    }
+
+    /**
+     * For Deleting All Item in the list
+     */
+    private fun deleteAllItemInList() {
+        val newList = adapter.currentList.toMutableList()
+        newList.clear()
+        adapter.submitList(newList.toList())
     }
 }

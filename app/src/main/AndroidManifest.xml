@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RecyclerViewListAdapterDiffUtilCallback">
-        <activity android:name=".simple.view.SimpleRecyclerView"></activity>
+        <activity android:name=".simple.view.SimpleRecyclerViewActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

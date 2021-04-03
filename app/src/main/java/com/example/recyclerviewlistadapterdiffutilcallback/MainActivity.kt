@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.example.recyclerviewlistadapterdiffutilcallback.databinding.ActivityMainBinding
-import com.example.recyclerviewlistadapterdiffutilcallback.simple.view.SimpleRecyclerView
+import com.example.recyclerviewlistadapterdiffutilcallback.simple.view.SimpleRecyclerViewActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onSimpleButtonClick() {
-        Intent(this, SimpleRecyclerView::class.java).apply {
+        Intent(this, SimpleRecyclerViewActivity::class.java).apply {
             startActivity(this)
         }
     }
